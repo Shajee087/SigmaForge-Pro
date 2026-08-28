@@ -1,0 +1,7 @@
+{
+  "source_rule": "credential_access/lsass_memory_dump.yml",
+  "rule_id": "a1b2c3d4-0002-4a1a-9b1a-000000000002",
+  "level": "high",
+  "type": "lucene_query",
+  "query": "(TargetImage:*\\\\lsass.exe AND (GrantedAccess:(0x1010 OR 0x1410 OR 0x1438 OR 0x143a OR 0x1fffff))) AND (NOT (SourceImage:(*\\\\wermgr.exe OR *\\\\werfault.exe OR *\\\\MsMpEng.exe)))"
+}

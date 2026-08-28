@@ -1,0 +1,7 @@
+{
+  "source_rule": "persistence/scheduled_task_creation.yml",
+  "rule_id": "a1b2c3d4-0003-4a1a-9b1a-000000000003",
+  "level": "medium",
+  "type": "lucene_query",
+  "query": "(Image:*\\\\schtasks.exe AND CommandLine:*\\/create*) AND (CommandLine:(*\\/sc\\ onlogon* OR *\\/sc\\ onstart* OR *\\/ru\\ system*))"
+}

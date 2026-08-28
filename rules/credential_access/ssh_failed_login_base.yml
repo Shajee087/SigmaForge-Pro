@@ -1,0 +1,22 @@
+title: Failed SSH Login Attempt
+name: ssh_failed_login
+id: a1b2c3d4-0001-4a1a-9b1a-000000000001
+status: stable
+description: Detects a single failed SSH password authentication attempt. Serves as the base event for the SSH brute-force correlation rule.
+author: Shajee Mushtaque
+date: 2026-08-27
+references:
+    - https://attack.mitre.org/techniques/T1110/001/
+tags:
+    - attack.credential_access
+    - attack.t1110.001
+logsource:
+    product: linux
+    service: sshd
+detection:
+    selection:
+        message|contains: 'Failed password'
+    condition: selection
+falsepositives:
+    - Occasional legitimate typo during manual login
+level: low

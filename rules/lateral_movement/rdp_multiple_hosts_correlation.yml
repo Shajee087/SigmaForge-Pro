@@ -1,0 +1,24 @@
+title: RDP Login to Multiple Hosts from Single Source in Short Window
+id: a1b2c3d4-0008-4a1a-9b1a-000000000108
+status: stable
+description: Correlates a single source IP establishing RDP sessions to multiple distinct destination hosts within a short time window, indicating lateral movement.
+author: Shajee Mushtaque
+date: 2026-08-27
+references:
+    - https://attack.mitre.org/techniques/T1021/001/
+tags:
+    - attack.lateral_movement
+    - attack.t1021.001
+correlation:
+    type: value_count
+    rules:
+        - rdp_session_established
+    group-by:
+        - src_ip
+    timespan: 10m
+    condition:
+        gte: 3
+        field: dst_ip
+falsepositives:
+    - Jump hosts, RDP gateways, or administrators managing several machines legitimately
+level: medium

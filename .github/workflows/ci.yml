@@ -1,0 +1,59 @@
+name: SigmaForge Pro CI
+
+on:
+  push:
+    paths:
+      - 'rules/**'
+      - 'scripts/**'
+      - 'tests/**'
+  pull_request:
+    paths:
+      - 'rules/**'
+      - 'scripts/**'
+      - 'tests/**'
+  workflow_dispatch: {}
+
+jobs:
+  validate-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Validate Sigma rule syntax and metadata
+        run: python scripts/validate.py
+
+      - name: Convert rules to Wazuh/Elasticsearch queries
+        run: python scripts/convert.py
+
+      - name: Run detection logic tests against sample logs
+        run: python scripts/test_detections.py
+
+      - name: Generate ATT&CK Navigator coverage layer
+        run: python scripts/generate_attack_layer.py
+
+      - name: Upload converted rules and coverage layer as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sigmaforge-pro-converted-rules
+          path: converted/
+          retention-days: 30
+
+  block-merge-on-failure:
+    needs: validate-and-test
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail the pipeline
+        run: |
+          echo "One or more rules failed validation, conversion, or detection tests."
+          echo "Merge is blocked until all checks pass."
+          exit 1

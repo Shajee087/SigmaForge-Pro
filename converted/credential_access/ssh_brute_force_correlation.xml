@@ -1,0 +1,16 @@
+<!-- Auto-generated from Sigma correlation rule: SSH Brute Force Login Attempts -->
+<!-- Base event rule name(s) referenced: ssh_failed_login -->
+<!-- Correlation type: event_count | group-by: ['src_ip'] | threshold: >= 5 in 5m -->
+<rule id="100502" level="10">
+    <if_matched_sid>BASE_RULE_ID_FOR_ssh_failed_login</if_matched_sid>
+    <same_source_ip />
+    <same_field>src_ip</same_field>
+    <frequency>5</frequency>
+    <timeframe>300</timeframe>
+    <description>SSH Brute Force Login Attempts</description>
+    <mitre>
+        <id>1110.001</id>
+    </mitre>
+</rule>
+<!-- NOTE: replace BASE_RULE_ID_FOR_* with the actual Wazuh rule ID assigned
+     to the base event rule once it is loaded into Wazuh's ruleset. -->

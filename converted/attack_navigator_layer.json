@@ -1,0 +1,157 @@
+{
+  "name": "SigmaForge Pro - Detection Coverage",
+  "versions": {
+    "attack": "15",
+    "navigator": "5.1.0",
+    "layer": "4.5"
+  },
+  "domain": "enterprise-attack",
+  "description": "Auto-generated coverage layer from SigmaForge Pro Sigma rule set.",
+  "sorting": 3,
+  "layout": {
+    "layout": "side",
+    "showID": true,
+    "showName": true
+  },
+  "gradient": {
+    "colors": [
+      "#8ec843",
+      "#ffe766",
+      "#ff6666"
+    ],
+    "minValue": 0,
+    "maxValue": 3
+  },
+  "legendItems": [],
+  "techniques": [
+    {
+      "techniqueID": "T1003.001",
+      "score": 1,
+      "color": "",
+      "comment": "Detected by: Suspicious Process Access to LSASS Memory",
+      "enabled": true,
+      "metadata": [],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1021.001",
+      "score": 2,
+      "color": "",
+      "comment": "Detected by: RDP Login to Multiple Hosts from Single Source in Short Window; RDP Session Established",
+      "enabled": true,
+      "metadata": [],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1021.002",
+      "score": 1,
+      "color": "",
+      "comment": "Detected by: Suspicious PsExec Remote Execution",
+      "enabled": true,
+      "metadata": [],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1027",
+      "score": 1,
+      "color": "",
+      "comment": "Detected by: Suspicious Base64 Encoded PowerShell Command",
+      "enabled": true,
+      "metadata": [],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1041",
+      "score": 1,
+      "color": "",
+      "comment": "Detected by: Large Outbound Data Transfer to External Host",
+      "enabled": true,
+      "metadata": [],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1053.005",
+      "score": 1,
+      "color": "",
+      "comment": "Detected by: Suspicious Scheduled Task Creation via schtasks",
+      "enabled": true,
+      "metadata": [],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1059.001",
+      "score": 1,
+      "color": "",
+      "comment": "Detected by: Suspicious Base64 Encoded PowerShell Command",
+      "enabled": true,
+      "metadata": [],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1070.001",
+      "score": 1,
+      "color": "",
+      "comment": "Detected by: Windows Event Log Cleared",
+      "enabled": true,
+      "metadata": [],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1071",
+      "score": 2,
+      "color": "",
+      "comment": "Detected by: Regular Interval Outbound Beaconing to Rare External Host; Outbound Connection to Common Web Port",
+      "enabled": true,
+      "metadata": [],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1071.004",
+      "score": 2,
+      "color": "",
+      "comment": "Detected by: Possible DNS Tunneling via High Volume of TXT/NULL Queries; DNS TXT or NULL Record Query",
+      "enabled": true,
+      "metadata": [],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1110.001",
+      "score": 2,
+      "color": "",
+      "comment": "Detected by: SSH Brute Force Login Attempts; Failed SSH Login Attempt",
+      "enabled": true,
+      "metadata": [],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1505.003",
+      "score": 1,
+      "color": "",
+      "comment": "Detected by: Web Server Process Spawning Command Shell",
+      "enabled": true,
+      "metadata": [],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1543.003",
+      "score": 1,
+      "color": "",
+      "comment": "Detected by: New Windows Service Created via sc.exe",
+      "enabled": true,
+      "metadata": [],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1562.001",
+      "score": 1,
+      "color": "",
+      "comment": "Detected by: Windows Defender Real-Time Protection Disabled",
+      "enabled": true,
+      "metadata": [],
+      "showSubtechniques": false
+    }
+  ],
+  "showTacticRowBackground": true,
+  "tacticRowBackground": "#dddddd",
+  "selectTechniquesAcrossTactics": true
+}

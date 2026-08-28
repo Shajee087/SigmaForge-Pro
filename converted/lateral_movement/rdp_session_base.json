@@ -1,0 +1,7 @@
+{
+  "source_rule": "lateral_movement/rdp_session_base.yml",
+  "rule_id": "a1b2c3d4-0008-4a1a-9b1a-000000000008",
+  "level": "low",
+  "type": "lucene_query",
+  "query": "DestinationPort:3389"
+}

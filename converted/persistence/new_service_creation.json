@@ -1,0 +1,7 @@
+{
+  "source_rule": "persistence/new_service_creation.yml",
+  "rule_id": "a1b2c3d4-0004-4a1a-9b1a-000000000004",
+  "level": "medium",
+  "type": "lucene_query",
+  "query": "Image:*\\\\sc.exe AND CommandLine:*create*"
+}

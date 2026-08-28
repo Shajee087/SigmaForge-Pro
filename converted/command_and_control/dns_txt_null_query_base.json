@@ -1,0 +1,7 @@
+{
+  "source_rule": "command_and_control/dns_txt_null_query_base.yml",
+  "rule_id": "a1b2c3d4-0011-4a1a-9b1a-000000000011",
+  "level": "low",
+  "type": "lucene_query",
+  "query": "query_type:(TXT OR NULL)"
+}

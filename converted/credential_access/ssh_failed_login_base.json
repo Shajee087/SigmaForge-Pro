@@ -1,0 +1,7 @@
+{
+  "source_rule": "credential_access/ssh_failed_login_base.yml",
+  "rule_id": "a1b2c3d4-0001-4a1a-9b1a-000000000001",
+  "level": "low",
+  "type": "lucene_query",
+  "query": "message:*Failed\\ password*"
+}

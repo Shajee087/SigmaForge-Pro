@@ -1,0 +1,17 @@
+<!-- Auto-generated from Sigma correlation rule: Regular Interval Outbound Beaconing to Rare External Host -->
+<!-- Base event rule name(s) referenced: outbound_web_connection -->
+<!-- Correlation type: event_count | group-by: ['src_ip', 'dst_ip'] | threshold: >= 20 in 1h -->
+<rule id="100500" level="7">
+    <if_matched_sid>BASE_RULE_ID_FOR_outbound_web_connection</if_matched_sid>
+    <same_source_ip />
+    <same_field>src_ip</same_field>
+        <same_field>dst_ip</same_field>
+    <frequency>20</frequency>
+    <timeframe>3600</timeframe>
+    <description>Regular Interval Outbound Beaconing to Rare External Host</description>
+    <mitre>
+        <id>1071</id>
+    </mitre>
+</rule>
+<!-- NOTE: replace BASE_RULE_ID_FOR_* with the actual Wazuh rule ID assigned
+     to the base event rule once it is loaded into Wazuh's ruleset. -->

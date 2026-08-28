@@ -1,0 +1,16 @@
+<!-- Auto-generated from Sigma correlation rule: RDP Login to Multiple Hosts from Single Source in Short Window -->
+<!-- Base event rule name(s) referenced: rdp_session_established -->
+<!-- Correlation type: value_count | group-by: ['src_ip'] | threshold: >= 3 in 10m -->
+<rule id="100503" level="7">
+    <if_matched_sid>BASE_RULE_ID_FOR_rdp_session_established</if_matched_sid>
+    <same_source_ip />
+    <same_field>src_ip</same_field>
+    <frequency>3</frequency>
+    <timeframe>600</timeframe>
+    <description>RDP Login to Multiple Hosts from Single Source in Short Window</description>
+    <mitre>
+        <id>1021.001</id>
+    </mitre>
+</rule>
+<!-- NOTE: replace BASE_RULE_ID_FOR_* with the actual Wazuh rule ID assigned
+     to the base event rule once it is loaded into Wazuh's ruleset. -->

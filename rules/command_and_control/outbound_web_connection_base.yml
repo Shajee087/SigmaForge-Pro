@@ -1,0 +1,25 @@
+title: Outbound Connection to Common Web Port
+name: outbound_web_connection
+id: a1b2c3d4-0012-4a1a-9b1a-000000000012
+status: experimental
+description: Detects a single outbound network connection on a common web port (80/443/8080). Serves as the base event for the beaconing correlation rule.
+author: Shajee Mushtaque
+date: 2026-08-27
+references:
+    - https://attack.mitre.org/techniques/T1071/
+tags:
+    - attack.command_and_control
+    - attack.t1071
+logsource:
+    category: network_connection
+    product: any
+detection:
+    selection:
+        dst_port:
+            - 443
+            - 80
+            - 8080
+    condition: selection
+falsepositives:
+    - Normal browsing and application traffic
+level: low

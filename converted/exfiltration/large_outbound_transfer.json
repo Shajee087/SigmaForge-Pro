@@ -1,0 +1,7 @@
+{
+  "source_rule": "exfiltration/large_outbound_transfer.yml",
+  "rule_id": "a1b2c3d4-0013-4a1a-9b1a-000000000013",
+  "level": "medium",
+  "type": "lucene_query",
+  "query": "bytes_out:>=104857600 AND direction:outbound"
+}

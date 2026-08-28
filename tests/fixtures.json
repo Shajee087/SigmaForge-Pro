@@ -1,0 +1,54 @@
+{
+  "credential_access/lsass_memory_dump.yml": {
+    "true_positive": {"TargetImage": "C:\\Windows\\System32\\lsass.exe", "GrantedAccess": "0x1410", "SourceImage": "C:\\Users\\Public\\mimikatz.exe"},
+    "false_positive": {"TargetImage": "C:\\Windows\\System32\\lsass.exe", "GrantedAccess": "0x1410", "SourceImage": "C:\\Windows\\System32\\wermgr.exe"}
+  },
+  "defense_evasion/defender_disabled.yml": {
+    "true_positive": {"Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", "CommandLine": "powershell.exe -Command Set-MpPreference -DisableRealtimeMonitoring $true"},
+    "false_positive": {"Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", "CommandLine": "powershell.exe -Command Get-MpComputerStatus"}
+  },
+  "defense_evasion/clear_event_logs.yml": {
+    "true_positive": {"Image": "C:\\Windows\\System32\\wevtutil.exe", "CommandLine": "wevtutil.exe cl Security"},
+    "false_positive": {"Image": "C:\\Windows\\System32\\wevtutil.exe", "CommandLine": "wevtutil.exe qe Security /c:5"}
+  },
+  "execution/encoded_powershell.yml": {
+    "true_positive": {"Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", "CommandLine": "powershell.exe -EncodedCommand SQBFAFgA..."},
+    "false_positive": {"Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", "CommandLine": "powershell.exe -File deploy.ps1"}
+  },
+  "execution/web_shell_spawn.yml": {
+    "true_positive": {"ParentImage": "C:\\Windows\\System32\\inetsrv\\w3wp.exe", "Image": "C:\\Windows\\System32\\cmd.exe"},
+    "false_positive": {"ParentImage": "C:\\Windows\\explorer.exe", "Image": "C:\\Windows\\System32\\cmd.exe"}
+  },
+  "exfiltration/large_outbound_transfer.yml": {
+    "true_positive": {"bytes_out": 209715200, "direction": "outbound"},
+    "false_positive": {"bytes_out": 2048, "direction": "outbound"}
+  },
+  "lateral_movement/psexec_execution.yml": {
+    "true_positive": {"Image": "C:\\Tools\\PsExec64.exe", "CommandLine": "PsExec64.exe -accepteula \\\\10.0.0.5 cmd.exe"},
+    "false_positive": {"Image": "C:\\Tools\\PsExec64.exe", "CommandLine": "PsExec64.exe -help"}
+  },
+  "persistence/new_service_creation.yml": {
+    "true_positive": {"Image": "C:\\Windows\\System32\\sc.exe", "CommandLine": "sc.exe create backdoorsvc binPath= C:\\temp\\evil.exe"},
+    "false_positive": {"Image": "C:\\Windows\\System32\\sc.exe", "CommandLine": "sc.exe query backdoorsvc"}
+  },
+  "persistence/scheduled_task_creation.yml": {
+    "true_positive": {"Image": "C:\\Windows\\System32\\schtasks.exe", "CommandLine": "schtasks.exe /create /sc onlogon /ru system /tn Updater /tr evil.exe"},
+    "false_positive": {"Image": "C:\\Windows\\System32\\schtasks.exe", "CommandLine": "schtasks.exe /create /sc daily /tn Backup /tr backup.exe"}
+  },
+  "credential_access/ssh_failed_login_base.yml": {
+    "true_positive": {"message": "Failed password for invalid user admin from 203.0.113.5 port 51422 ssh2"},
+    "false_positive": {"message": "Accepted password for shajee from 192.168.1.10 port 51422 ssh2"}
+  },
+  "lateral_movement/rdp_session_base.yml": {
+    "true_positive": {"DestinationPort": 3389},
+    "false_positive": {"DestinationPort": 445}
+  },
+  "command_and_control/dns_txt_null_query_base.yml": {
+    "true_positive": {"query_type": "TXT"},
+    "false_positive": {"query_type": "A"}
+  },
+  "command_and_control/outbound_web_connection_base.yml": {
+    "true_positive": {"dst_port": 443},
+    "false_positive": {"dst_port": 22}
+  }
+}

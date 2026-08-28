@@ -1,0 +1,7 @@
+{
+  "source_rule": "execution/encoded_powershell.yml",
+  "rule_id": "a1b2c3d4-0009-4a1a-9b1a-000000000009",
+  "level": "high",
+  "type": "lucene_query",
+  "query": "(Image:(*\\\\powershell.exe OR *\\\\pwsh.exe)) AND (CommandLine:(*\\-enc* OR *\\-EncodedCommand* OR *\\-e\\ *))"
+}

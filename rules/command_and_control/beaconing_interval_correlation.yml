@@ -1,0 +1,24 @@
+title: Regular Interval Outbound Beaconing to Rare External Host
+id: a1b2c3d4-0012-4a1a-9b1a-000000000112
+status: experimental
+description: Correlates a host making a high number of outbound connections to the same external destination within an hour, a classic C2 beaconing pattern.
+author: Shajee Mushtaque
+date: 2026-08-27
+references:
+    - https://attack.mitre.org/techniques/T1071/
+tags:
+    - attack.command_and_control
+    - attack.t1071
+correlation:
+    type: event_count
+    rules:
+        - outbound_web_connection
+    group-by:
+        - src_ip
+        - dst_ip
+    timespan: 1h
+    condition:
+        gte: 20
+falsepositives:
+    - Legitimate polling applications, monitoring agents, or update checkers
+level: medium

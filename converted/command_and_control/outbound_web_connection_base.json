@@ -1,0 +1,7 @@
+{
+  "source_rule": "command_and_control/outbound_web_connection_base.yml",
+  "rule_id": "a1b2c3d4-0012-4a1a-9b1a-000000000012",
+  "level": "low",
+  "type": "lucene_query",
+  "query": "dst_port:(443 OR 80 OR 8080)"
+}

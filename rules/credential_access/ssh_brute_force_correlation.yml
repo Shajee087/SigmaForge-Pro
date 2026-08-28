@@ -1,0 +1,23 @@
+title: SSH Brute Force Login Attempts
+id: a1b2c3d4-0001-4a1a-9b1a-000000000101
+status: stable
+description: Correlates repeated failed SSH login events from the same source IP within a short window to detect brute-force attacks.
+author: Shajee Mushtaque
+date: 2026-08-27
+references:
+    - https://attack.mitre.org/techniques/T1110/001/
+tags:
+    - attack.credential_access
+    - attack.t1110.001
+correlation:
+    type: event_count
+    rules:
+        - ssh_failed_login
+    group-by:
+        - src_ip
+    timespan: 5m
+    condition:
+        gte: 5
+falsepositives:
+    - Misconfigured automated scripts or monitoring tools
+level: high

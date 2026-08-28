@@ -1,0 +1,7 @@
+{
+  "source_rule": "execution/web_shell_spawn.yml",
+  "rule_id": "a1b2c3d4-0010-4a1a-9b1a-000000000010",
+  "level": "high",
+  "type": "lucene_query",
+  "query": "(ParentImage:(*\\\\w3wp.exe OR *\\\\httpd.exe OR *\\\\nginx.exe OR *\\\\php\\-cgi.exe)) AND (Image:(*\\\\cmd.exe OR *\\\\powershell.exe))"
+}

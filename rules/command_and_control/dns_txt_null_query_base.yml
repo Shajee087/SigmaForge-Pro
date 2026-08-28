@@ -1,0 +1,24 @@
+title: DNS TXT or NULL Record Query
+name: dns_txt_null_query
+id: a1b2c3d4-0011-4a1a-9b1a-000000000011
+status: stable
+description: Detects a single DNS TXT or NULL record query. Serves as the base event for the DNS tunneling correlation rule.
+author: Shajee Mushtaque
+date: 2026-08-27
+references:
+    - https://attack.mitre.org/techniques/T1071/004/
+tags:
+    - attack.command_and_control
+    - attack.t1071.004
+logsource:
+    category: dns
+    product: any
+detection:
+    selection:
+        query_type:
+            - 'TXT'
+            - 'NULL'
+    condition: selection
+falsepositives:
+    - Legitimate SPF/DKIM lookups and some CDN services
+level: low

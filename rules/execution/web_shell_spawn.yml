@@ -1,0 +1,28 @@
+title: Web Server Process Spawning Command Shell
+id: a1b2c3d4-0010-4a1a-9b1a-000000000010
+status: stable
+description: Detects a web server process (IIS, Apache, Nginx) spawning cmd.exe or powershell.exe, a strong indicator of a web shell being used to execute commands.
+author: Shajee Mushtaque
+date: 2026-08-27
+references:
+    - https://attack.mitre.org/techniques/T1505/003/
+tags:
+    - attack.persistence
+    - attack.t1505.003
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection:
+        ParentImage|endswith:
+            - '\w3wp.exe'
+            - '\httpd.exe'
+            - '\nginx.exe'
+            - '\php-cgi.exe'
+        Image|endswith:
+            - '\cmd.exe'
+            - '\powershell.exe'
+    condition: selection
+falsepositives:
+    - Rare legitimate web application admin scripts invoking shell commands
+level: high

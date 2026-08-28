@@ -1,0 +1,24 @@
+title: Possible DNS Tunneling via High Volume of TXT/NULL Queries
+id: a1b2c3d4-0011-4a1a-9b1a-000000000111
+status: stable
+description: Correlates an unusually high volume of DNS TXT or NULL record queries to a single domain from one host, a common indicator of DNS-based C2 tunneling.
+author: Shajee Mushtaque
+date: 2026-08-27
+references:
+    - https://attack.mitre.org/techniques/T1071/004/
+tags:
+    - attack.command_and_control
+    - attack.t1071.004
+correlation:
+    type: event_count
+    rules:
+        - dns_txt_null_query
+    group-by:
+        - src_ip
+        - query_domain
+    timespan: 5m
+    condition:
+        gte: 50
+falsepositives:
+    - Legitimate services using TXT records heavily (e.g. SPF/DKIM lookups, some CDNs)
+level: medium

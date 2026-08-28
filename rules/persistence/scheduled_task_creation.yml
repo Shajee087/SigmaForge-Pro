@@ -1,0 +1,27 @@
+title: Suspicious Scheduled Task Creation via schtasks
+id: a1b2c3d4-0003-4a1a-9b1a-000000000003
+status: stable
+description: Detects creation of a scheduled task using schtasks.exe with parameters commonly used for persistence.
+author: Shajee Mushtaque
+date: 2026-08-27
+references:
+    - https://attack.mitre.org/techniques/T1053/005/
+tags:
+    - attack.persistence
+    - attack.t1053.005
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection:
+        Image|endswith: '\schtasks.exe'
+        CommandLine|contains: '/create'
+    suspicious_params:
+        CommandLine|contains:
+            - '/sc onlogon'
+            - '/sc onstart'
+            - '/ru system'
+    condition: selection and suspicious_params
+falsepositives:
+    - Legitimate IT administration or software installers configuring scheduled maintenance tasks
+level: medium

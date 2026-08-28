@@ -1,0 +1,7 @@
+{
+  "source_rule": "lateral_movement/psexec_execution.yml",
+  "rule_id": "a1b2c3d4-0007-4a1a-9b1a-000000000007",
+  "level": "medium",
+  "type": "lucene_query",
+  "query": "(Image:(*\\\\PsExec.exe OR *\\\\PsExec64.exe)) AND CommandLine:*\\-accepteula*"
+}

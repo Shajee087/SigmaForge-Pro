@@ -1,0 +1,23 @@
+title: New Windows Service Created via sc.exe
+id: a1b2c3d4-0004-4a1a-9b1a-000000000004
+status: stable
+description: Detects creation of a new Windows service via the command-line sc.exe utility, often used for persistence or lateral movement.
+author: Shajee Mushtaque
+date: 2026-08-27
+references:
+    - https://attack.mitre.org/techniques/T1543/003/
+tags:
+    - attack.persistence
+    - attack.privilege_escalation
+    - attack.t1543.003
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection:
+        Image|endswith: '\sc.exe'
+        CommandLine|contains: 'create'
+    condition: selection
+falsepositives:
+    - Software installation processes creating legitimate Windows services
+level: medium

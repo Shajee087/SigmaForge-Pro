@@ -1,0 +1,25 @@
+title: Suspicious PsExec Remote Execution
+id: a1b2c3d4-0007-4a1a-9b1a-000000000007
+status: stable
+description: Detects execution of PsExec or its service artifact, commonly used by attackers for lateral movement across a network.
+author: Shajee Mushtaque
+date: 2026-08-27
+references:
+    - https://attack.mitre.org/techniques/T1021/002/
+tags:
+    - attack.lateral_movement
+    - attack.execution
+    - attack.t1021.002
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection:
+        Image|endswith:
+            - '\PsExec.exe'
+            - '\PsExec64.exe'
+        CommandLine|contains: '-accepteula'
+    condition: selection
+falsepositives:
+    - Legitimate IT administration using PsExec for remote management
+level: medium

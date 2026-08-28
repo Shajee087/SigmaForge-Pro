@@ -1,0 +1,7 @@
+{
+  "source_rule": "defense_evasion/clear_event_logs.yml",
+  "rule_id": "a1b2c3d4-0006-4a1a-9b1a-000000000006",
+  "level": "high",
+  "type": "lucene_query",
+  "query": "Image:*\\\\wevtutil.exe AND (CommandLine:(*cl\\ * OR *clear\\-log*))"
+}

@@ -1,0 +1,5 @@
+pysigma==1.5.0
+pysigma-backend-elasticsearch
+pyyaml
+streamlit
+pandas

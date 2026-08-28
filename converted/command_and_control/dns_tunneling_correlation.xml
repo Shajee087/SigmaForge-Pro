@@ -1,0 +1,17 @@
+<!-- Auto-generated from Sigma correlation rule: Possible DNS Tunneling via High Volume of TXT/NULL Queries -->
+<!-- Base event rule name(s) referenced: dns_txt_null_query -->
+<!-- Correlation type: event_count | group-by: ['src_ip', 'query_domain'] | threshold: >= 50 in 5m -->
+<rule id="100501" level="7">
+    <if_matched_sid>BASE_RULE_ID_FOR_dns_txt_null_query</if_matched_sid>
+    <same_source_ip />
+    <same_field>src_ip</same_field>
+        <same_field>query_domain</same_field>
+    <frequency>50</frequency>
+    <timeframe>300</timeframe>
+    <description>Possible DNS Tunneling via High Volume of TXT/NULL Queries</description>
+    <mitre>
+        <id>1071.004</id>
+    </mitre>
+</rule>
+<!-- NOTE: replace BASE_RULE_ID_FOR_* with the actual Wazuh rule ID assigned
+     to the base event rule once it is loaded into Wazuh's ruleset. -->
