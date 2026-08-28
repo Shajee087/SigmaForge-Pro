@@ -42,22 +42,22 @@ sigmaforge-pro/
 
 ## Pipeline stages
 
-1. **Author** — Write a Sigma rule under `/rules/<tactic>/`, tagged with a
+1. **Author**  Write a Sigma rule under `/rules/<tactic>/`, tagged with a
    MITRE ATT&CK technique ID.
-2. **Validate** — `validate.py` checks required fields and Sigma syntax. For
+2. **Validate**  `validate.py` checks required fields and Sigma syntax. For
    correlation rules (e.g. "5 failed SSH logins in 5 minutes"), it resolves
    base-event references across the whole rule collection.
-3. **Convert** — `convert.py` compiles standalone rules to
+3. **Convert**  `convert.py` compiles standalone rules to
    Elasticsearch/Lucene queries and correlation rules to Wazuh
    `<frequency>/<timeout>` rule stubs — because Wazuh implements threshold
    correlation natively rather than through a stateless query, which is a
    real constraint detection engineers work around.
-4. **Test** — `test_detections.py` evaluates each rule's selection logic
+4. **Test**  `test_detections.py` evaluates each rule's selection logic
    against paired true-positive/false-positive log fixtures, catching logic
    regressions before they reach production.
-5. **Map coverage** — `generate_attack_layer.py` builds a MITRE ATT&CK
+5. **Map coverage**  `generate_attack_layer.py` builds a MITRE ATT&CK
    Navigator layer showing exactly which techniques the rule set detects.
-6. **Ship** — GitHub Actions runs all of the above on every push/PR touching
+6. **Ship**  GitHub Actions runs all of the above on every push/PR touching
    `/rules`. A failing rule blocks the merge.
 
 ## Rule set
