@@ -2,7 +2,7 @@
 
 **A Detection-as-Code CI/CD pipeline for Sigma rules.**
 
-Built as an advanced follow-up to [SigmaForge-Lite](#), this project turns Sigma
+Built as an advanced follow-up to [SigmaForge-Lite](https://github.com/Shajee087/sigmaforge-lite), this project turns Sigma
 rule authoring into a proper software engineering workflow: every rule is
 validated, converted, and automatically tested against sample logs before it's
 allowed to merge — the same way SOC and detection engineering teams manage
