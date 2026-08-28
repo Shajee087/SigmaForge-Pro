@@ -1,5 +1,5 @@
 # SigmaForge Pro
- **Live Demo:** [sigmaforge-pro.streamlit.app](https://sigmaforge-pro.streamlit.app/)
+## **Live Demo:** [sigmaforge-pro.streamlit.app](https://sigmaforge-pro.streamlit.app/)
 
 **A Detection-as-Code CI/CD pipeline for Sigma rules.**
 
